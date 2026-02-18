@@ -44,9 +44,72 @@
         body {
             background-image: url(https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2UlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww);
         }
-    </style>
+        .modal {
+        display: none; /* Fica escondido por padrão */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Preto com transparência */
+        z-index: 1000; /* Garante que fique por cima de tudo */
+        justify-content: center;
+        align-items: center;
+        }
+
+        /* Quando o link for clicado (#janela-video), o modal aparece */
+        .modal:target {
+            display: flex;
+        }
+
+        /* Caixa branca/container do vídeo */
+        .modal-conteudo {
+            width: 90%;
+            max-width: 800px;
+            background: #000;
+            position: relative;
+            border: 2px solid #fff; /* Opcional: bordinha branca para destacar */
+            border-radius: 8px;
+        }
+
+        /* Botão de fechar */
+        .fechar {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #fff;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>    
 </head>
 <body>
-    <h1><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">comi o cu de quem ta lendo</a></h1>
+    <h1><a href="#janela-video" class="botao-rosa">comi o cu de quem ta lendo</a></h1>
+
+    <div id="janela-video" class="modal">
+        <div class="modal-conteudo">
+            <a href="#" class="fechar">&times;</a>
+            
+            <video id="meuVideo" width="100%" controls>
+                <source src="video.mp4" type="video/mp4">
+                Seu navegador não suporta o vídeo.
+            </video>
+        </div>
+    </div>
+<script>
+  // Detecta quando a URL muda (o clique no #janela-video)
+  window.addEventListener('hashchange', function() {
+    const video = document.getElementById('meuVideo');
+    
+    // Se o modal estiver aberto (na URL)
+    if (window.location.hash === '#janela-video') {
+      video.play(); // Começa o vídeo
+    } else {
+      video.pause(); // Pausa o vídeo se fechar o modal
+      video.currentTime = 0; // Volta o vídeo para o início
+    }
+  });
+</script>
 </body>
 </html>
