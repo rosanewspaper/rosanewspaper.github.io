@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rosanewspaper</title>
+    <style>
+        h1 {
+            text-align: center;
+            margin-top: 20%;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 50px;
+            text-transform: uppercase;
+            text-align: center;
+
+            /* 1. Criamos um degradê bem largo (300% de largura) */
+            background: linear-gradient(
+                to right, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff, #ff0000
+            );
+            background-size: 300% auto;
+
+            /* 2. Fazemos o fundo aparecer apenas no texto */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            /* 3. A mágica: a animação que move o fundo */
+            animation: rainbow-scroll 3s linear infinite;
+            }
+
+            /* Definição do movimento */
+            @keyframes rainbow-scroll {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 300% center;
+            }
+            }
+        
+        body {
+            background-image: url(https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhY2UlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww);
+        }
+    </style>
+</head>
+<body>
+    <h1>comi o cu de quem ta lendo</h1>
+</body>
+</html>
